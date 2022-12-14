@@ -2,50 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : ProyectileAbstract
 {
-    public float speed;
-    public int maxTime;
-    float _counter;
-    [SerializeField]
-    int damage = 2;
 
-    public GameObject paricles;
+    //public GameObject paricles;
 
-    Factory<Bullet> _referenceBack;
+    private void Start()
+    {
+        Activated();
 
+        _chosenStrategy = new StraightMovement(transform, transform.up, _speed);
+    }
     private void Update()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
-        _counter += Time.deltaTime;
+        StrategyMove(_chosenStrategy);
 
-        if (_counter >= maxTime)
+        lifeTimeCount(Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Ilife target = collision.GetComponent<Ilife>();
+
+        if (target != null)
         {
-            TurnOff(this);
-            _referenceBack.ReturnObject(this);
+            target.Damage(_damage);
+            Deactivated();
         }
-
-    }
-
-    public void ResetBullet()
-    {
-        _counter = 0;
-    }
-
-    public void Create(Factory<Bullet> op)
-    {
-        _referenceBack = op;
-    }
-
-    public static void TurnOn(Bullet b)
-    {
-        b.gameObject.SetActive(true);
-    }
-
-    public static void TurnOff(Bullet b)
-    {
-        b.ResetBullet();
-        b.gameObject.SetActive(false);
-
     }
 }

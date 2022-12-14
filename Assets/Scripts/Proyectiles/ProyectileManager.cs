@@ -43,6 +43,7 @@ public class ProyectileManager : MonoBehaviour
         var b = _dictionary[bullet].factory.GetObject();
         b.Create(_dictionary[bullet].factory);
         b.transform.position = t.position;
+        b.transform.rotation = t.rotation;
 
     }
 

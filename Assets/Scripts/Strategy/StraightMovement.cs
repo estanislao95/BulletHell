@@ -9,13 +9,15 @@ public class StraightMovement : IMovement
 
     Transform _transform;
     float _speed;
-    public StraightMovement(Transform transform, float speed = 1)
+    Vector3 _dir;
+    public StraightMovement(Transform transform, Vector3 dir, float speed = 1)
     {
         _transform = transform;
         _speed = speed;
+        _dir = dir;
     }
     public void Move()
     {
-        _transform.position += (-_transform.up) * _speed * Time.deltaTime;
+        _transform.position += _dir * _speed * Time.deltaTime;
     }
 }
