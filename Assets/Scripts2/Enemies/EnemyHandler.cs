@@ -43,7 +43,7 @@ public class EnemyHandler : MonoBehaviour
                                                                   //y cuando nos quedamos con tipo 5 de el mismo tipo, solo ponemos el tipo 1 vez al final del array.
 
             EnemyAbstract b = EnemyManager.instance.SpawnAndSaveEnemy(transforms[i], type[count]);
-            b.assignHandler(this);
+            b.AssignHandler(this);
             waveEnemyList.Add(b);
         }
     }
@@ -61,6 +61,13 @@ public class EnemyHandler : MonoBehaviour
     public void WaveFinished()
     {
         currentWave++;
+        if (currentWave > waves.Count)
+            LastWaveFinished();
+    }
+
+    public void LastWaveFinished()
+    {
+        print("good job! u beat the game");
     }
 
     #endregion

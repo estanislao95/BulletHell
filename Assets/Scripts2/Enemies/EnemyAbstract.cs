@@ -26,7 +26,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
         _referenceBack.ReturnObject(this);
 
         if (_eh != null)
-            returnToHandler(_eh);
+            ReturnToHandler(_eh);
     }
 
     #region Damage
@@ -78,13 +78,14 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     #region Wave
     //para cuando queremos hacer olas basadas en la cantidad de enemigos destruidos, con esto nos aseguramos que mataron a todos los enemigos.
     //capaz simplemente un int seria mejor.
-
-     public void assignHandler(EnemyHandler eh)
+    //A CONSIDERAR: Potencialmente vamos a querer que enemyHandler sea un instance. Pero esto significaria que todos los enemigos al morir lo llamarian,
+    //y capaz no queramos eso. Por eso, por ahora, lo dejamos asi.
+     public void AssignHandler(EnemyHandler eh)
      {
      _eh = eh;
      }
 
-    public void returnToHandler(EnemyHandler eh)
+    public void ReturnToHandler(EnemyHandler eh)
     {
     eh.EnemyKilled(this);
     }
