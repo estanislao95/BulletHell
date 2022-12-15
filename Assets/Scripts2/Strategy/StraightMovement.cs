@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StraightMovement : IMovement
 {
-    //public delegate void Shoot();
-    //Shoot _shootMethod;
 
     Transform _transform;
     float _speed;
