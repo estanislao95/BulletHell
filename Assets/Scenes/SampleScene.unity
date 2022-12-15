@@ -470,10 +470,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e61361ee88640e48acfda7b649447ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cannons: []
   timer: 0
   MaxTimer: 1.4
   timermultipler: 20
-  upgrade: 0
 --- !u!61 &122510116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
 --- !u!50 &122510117
 Rigidbody2D:
@@ -893,7 +893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Points: []
-  type: 0
 --- !u!1 &519396849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1437,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Points: []
-  type: 0
 --- !u!1 &968342900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,7 +1689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Points: []
-  type: 0
 --- !u!1 &1132387838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,7 +2841,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Points: []
-  type: 0
 --- !u!1 &2117459741
 GameObject:
   m_ObjectHideFlags: 0
