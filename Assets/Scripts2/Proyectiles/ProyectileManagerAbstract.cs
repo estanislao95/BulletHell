@@ -24,9 +24,10 @@ public abstract class ProyectileManagerAbstract : MonoBehaviour
 
         //print("shooting " + bullet.ToString());
         var b = factory.GetObject();
+        b.Create(factory);
         b.transform.position = t.position;
         b.transform.rotation = t.rotation;
-        b.Create(factory);
+        b.Activated();
     }
 
     protected Factory<ProyectileAbstract> AbstractAddToPool(ProyectileAbstract bullet, Factory<ProyectileAbstract> factory)

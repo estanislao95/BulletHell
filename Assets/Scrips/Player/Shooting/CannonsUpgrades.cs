@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
 {
-    public static List<ICannonUpgrades> upgrades = new List<ICannonUpgrades>();
+    //public static List<ICannonUpgrades> upgrades = new List<ICannonUpgrades>();
 
 
     public List<Transform> Points;
-    public PlayerProyectileType type;
+    //public PlayerProyectileType type;
 
     private void Awake()
     {
-        upgrades.Add(this);
+        //upgrades.Add(this);
         foreach (Transform point in gameObject.GetComponentInChildren<Transform>())
         {
             Points.Add(point);
@@ -20,7 +20,7 @@ public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
 
     }
 
-    public void shooting()
+    public void shooting(PlayerProyectileType type)
     {
         foreach (var item in Points)
         {

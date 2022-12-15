@@ -12,7 +12,7 @@ public class PlayerBullet : Bullet
         if (target != null)
         {
             target.Damage(_damage);
-            Deactivated();
+            Damage(1);
         }
     }
 }

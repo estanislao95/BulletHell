@@ -10,8 +10,7 @@ public class Bullet : ProyectileAbstract
 
     protected virtual void Start()
     {
-
-        _chosenStrategy = new StraightMovement(this.transform, this.transform.up, _speed);
+        //Activated();
         //_chosenStrategy = new SineMovement(transform, transform.up, transform.right, _speed, 3, 0.25f);
     }
     private void Update()
@@ -19,12 +18,6 @@ public class Bullet : ProyectileAbstract
         StrategyMove(_chosenStrategy);
 
         lifeTimeCount(Time.deltaTime);
-    }
-
-    public override void Activated()
-    {
-        base.Activated();
-        _chosenStrategy = new StraightMovement(transform, transform.up, _speed);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -36,5 +29,11 @@ public class Bullet : ProyectileAbstract
             target.Damage(_damage);
             Deactivated();
         }
+    }
+
+    public override void Activated()
+    {
+        base.Activated();
+        _chosenStrategy = new StraightMovement(transform, transform.up, _speed);
     }
 }
