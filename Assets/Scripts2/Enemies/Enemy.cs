@@ -19,12 +19,11 @@ public class Enemy : EnemyAbstract
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Ilife target = collision.GetComponent<Ilife>();
+        Ilife target = collision.GetComponent<IPlayerLife>();
 
         if (target != null)
         {
             target.Damage(_damage);
-            Deactivated();
         }
     }
 }

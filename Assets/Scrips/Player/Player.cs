@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, Ilife
+public class Player : MonoBehaviour, IPlayerLife
 {
     Model _model;
     View _view;

@@ -21,9 +21,9 @@ public class Bullet : ProyectileAbstract
         lifeTimeCount(Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Ilife target = collision.GetComponent<Ilife>();
+        Ilife target = collision.GetComponent<IPlayerLife>();
 
         if (target != null)
         {
