@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Santiago R. D'Angelo
-public class EnemyHandler : MonoBehaviour
+public class EnemyHandler : MonoBehaviour, IObservableFloat
 {
     public List<WaveData> waves;
     public int currentWave;
-
+    [SerializeField]
+    List<IObserverFloat> _allObservers = new List<IObserverFloat>();
     public List<EnemyAbstract> waveEnemyList = new List<EnemyAbstract>();
 
     bool hasStarted = false; //TEMP.
+    public void Start()
+    {
+        NotifyToObserver(currentWave);
+    }
+
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !hasStarted)  //TEMP. BORRAR PREVIO A ENTREGA.
@@ -27,11 +34,32 @@ public class EnemyHandler : MonoBehaviour
         EnemyManager.instance.SpawnEnemy(transform, type);
     }
 
+    public void Subscribe(IObserverFloat obs)
+    {
+        if (!_allObservers.Contains(obs))
+            _allObservers.Add(obs);
+    }
+
+    public void Unsubscribe(IObserverFloat obs)
+    {
+        if (!_allObservers.Contains(obs))
+            _allObservers.Remove(obs);
+    }
+
+    public void NotifyToObserver(float life)
+    {
+        for (int i = 0; i < _allObservers.Count; i++)
+        {
+            _allObservers[i].notify(life);
+        }
+    }
+
     #region Wave
 
     public void WaveStart(WaveData wd)
     {
         SummonWave(wd.positions, wd.types);
+        NotifyToObserver(currentWave);
     }
 
     public void SummonWave(Transform[] transforms, EnemyType[] type)

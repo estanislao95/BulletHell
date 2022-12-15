@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Model : Ilife
+public class Model : Ilife, IObservableFloat
 {
     int _life = FlyweightPointer.Player.maxLife;
     Transform _transform;
     float _speed = FlyweightPointer.Player.speed;
     public event Action hit;
     public event Action dead;
+    List<IObserverFloat> _allObservers = new List<IObserverFloat>();
 
     float miny;
     float maxy;
     float minx;
     float maxx;
 
-    public Model(Transform transform,float _miny, float _maxy, float _minx, float _maxx)
+    public Model(Transform transform,float _miny, float _maxy, float _minx, float _maxx, List<IObserverFloat> allObservers)
     {
         _transform = transform;
-
+        _allObservers = allObservers;
         miny = _miny;
         maxy = _maxy;
         minx = _minx;
@@ -54,7 +55,7 @@ public class Model : Ilife
         _life -= dmg;
 
         hit?.Invoke();
-
+        NotifyToObserver(dmg);
         if (_life <= 0)
             Debug.Log("GAME OVER");
     }
@@ -63,6 +64,27 @@ public class Model : Ilife
     public void Dead()
     {
         dead?.Invoke();
+    }
+
+
+    public void Subscribe(IObserverFloat obs)
+    {
+        if (!_allObservers.Contains(obs))
+            _allObservers.Add(obs);
+    }
+
+    public void Unsubscribe(IObserverFloat obs)
+    {
+        if (!_allObservers.Contains(obs))
+            _allObservers.Remove(obs);
+    }
+
+    public void NotifyToObserver(float life)
+    {
+        for (int i = 0; i < _allObservers.Count; i++)
+        {
+            _allObservers[i].notify(life);
+        }
     }
 
 }

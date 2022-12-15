@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IPlayerLife
+public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
 {
     Model _model;
     View _view;
@@ -16,9 +16,12 @@ public class Player : MonoBehaviour, IPlayerLife
     [SerializeField]
     string hit, dead;
 
+    [SerializeField]
+    List<IObserverFloat> _allObservers = new List<IObserverFloat>();
+
     void Start()
     {
-        _model = new Model(transform, miny, maxy, minx, maxx);
+        _model = new Model(transform, miny, maxy, minx, maxx, _allObservers);
         _view = new View(hit, dead);
         _controler = new Controler(_model);
 
@@ -40,7 +43,22 @@ public class Player : MonoBehaviour, IPlayerLife
 
     }
 
+    public void Subscribe(IObserverFloat obs)
+    {
+        if (!_allObservers.Contains(obs))
+            _allObservers.Add(obs);
+    }
 
+    public void Unsubscribe(IObserverFloat obs)
+    {
+        if (!_allObservers.Contains(obs))
+            _allObservers.Remove(obs);
+    }
+
+    public void NotifyToObserver(float life)
+    {
+        _model.NotifyToObserver(life);
+    }
 
 
 }

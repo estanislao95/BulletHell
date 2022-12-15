@@ -72,6 +72,7 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
     public void Create(Factory<ProyectileAbstract> op)
     {
         _referenceBack = op;
+        Activated();
     }
 
     public void TurnOff()
