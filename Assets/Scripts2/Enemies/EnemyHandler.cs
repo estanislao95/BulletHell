@@ -44,6 +44,7 @@ public class EnemyHandler : MonoBehaviour
 
             EnemyAbstract b = EnemyManager.instance.SpawnAndSaveEnemy(transforms[i], type[count]);
             b.assignHandler(this);
+            waveEnemyList.Add(b);
         }
     }
 
@@ -59,7 +60,7 @@ public class EnemyHandler : MonoBehaviour
 
     public void WaveFinished()
     {
-        currentWave += 1;
+        currentWave++;
     }
 
     #endregion
