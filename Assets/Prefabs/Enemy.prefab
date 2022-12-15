@@ -101,6 +101,7 @@ MonoBehaviour:
   _health: 5
   _speed: 1
   _proyectileType: 0
+  DeadPoints: 10
 --- !u!61 &2532717123117412148
 BoxCollider2D:
   m_ObjectHideFlags: 0

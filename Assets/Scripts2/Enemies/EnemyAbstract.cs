@@ -16,6 +16,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     [SerializeField] protected ProyectileType _proyectileType;
 
     protected EnemyHandler _eh;
+    public int DeadPoints;
     public virtual void Activated()
     {
         
@@ -24,7 +25,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     public virtual void Deactivated()
     {
         _referenceBack.ReturnObject(this);
-
+        GameManager.Instance.addpoints(DeadPoints);
         if (_eh != null)
             ReturnToHandler(_eh);
     }
