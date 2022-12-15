@@ -25,7 +25,7 @@ public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
     {
         foreach (var item in Points)
         {
-            ProyectileManager.instance.SpawnProyectile(item, ProyectileType.straight);
+            PlayerProyectileManager.instance.SpawnProyectile(item, PlayerProyectileType.straight);
         }
 
     }
