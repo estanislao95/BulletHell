@@ -34,6 +34,8 @@ public class EnemyHandler : MonoBehaviour
 
     public void SummonWave(Transform[] transforms, EnemyType[] type)
     {
+        waveEnemyList.Clear();
+
         for (int i = 0; i < transforms.Length; i++)
         {
             int count = i;
@@ -61,7 +63,9 @@ public class EnemyHandler : MonoBehaviour
     public void WaveFinished()
     {
         currentWave++;
-        if (currentWave > waves.Count)
+        if (currentWave < waves.Count)
+            WaveStart(waves[currentWave]); //Temp?
+        else
             LastWaveFinished();
     }
 
