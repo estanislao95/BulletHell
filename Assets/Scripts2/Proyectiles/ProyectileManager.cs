@@ -3,68 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Santiago R. D'Angelo
-public class ProyectileManager : MonoBehaviour
+public class ProyectileManager : ProyectileManagerAbstract
 {
 
-    public static ProyectileManager instance;
+    public static ProyectileManager instance; //new for PPM
 
     [SerializeField]
-    ProyectileData[] _proyectileObject;
-    Dictionary<ProyectileType, ProyectileData> _dictionary = new Dictionary<ProyectileType, ProyectileData>();
+    ProyectileData[] _proyectileObject; //new for PPM, this would be unused.
+    Dictionary<ProyectileType, ProyectileData> _dictionary = new Dictionary<ProyectileType, ProyectileData>(); //new for PPM, this would be unused.
 
-    private void Awake()
+    private void Awake() //override this for PPM
     {
         instance = this;
 
 
         for (int i = 0; i < _proyectileObject.Length; i++)
         {
-            _proyectileObject[i].factory = new Factory<ProyectileAbstract>(_proyectileObject[i].Drop, TurnOn, TurnOff, _proyectileObject[i].stock);
+            //_proyectileObject[i].factory = new Factory<ProyectileAbstract>(_proyectileObject[i].Drop, TurnOn, TurnOff, _proyectileObject[i].stock);
+            _proyectileObject[i].factory = FactoryBuild(_proyectileObject[i].Drop, TurnOn, TurnOff, _proyectileObject[i].stock);
             _dictionary.Add(_proyectileObject[i].type, _proyectileObject[i]);
         }
 
 
     }
 
-    public void TurnOn(ProyectileAbstract p)
+
+    public void SpawnProyectile(Transform t, ProyectileType type) //new for PPM, needs different parameters
     {
-        p.TurnOn();
+        AbstractSpawnProyectile(t, _dictionary[type].factory);
     }
 
-    public void TurnOff(ProyectileAbstract p)
+    public Factory<ProyectileAbstract> AddToPool(ProyectileAbstract bullet, ProyectileType type)  //new for PPM, needs different parameters
     {
-        p.TurnOff();
-    }
-
-    public void SpawnProyectile(Transform t, ProyectileType type)
-    {
-        ProyectileType bullet = type;
-
-        print("shooting " + bullet.ToString());
-        var b = _dictionary[bullet].factory.GetObject();
-        b.Create(_dictionary[bullet].factory);
-        b.transform.position = t.position;
-        b.transform.rotation = t.rotation;
-
-    }
-
-    public Factory<ProyectileAbstract> AddToPool(ProyectileAbstract bullet, ProyectileType type)
-    {
-        _dictionary[type].factory.ReturnObject(bullet);
-
-        return _dictionary[type].factory;
+        return AbstractAddToPool(bullet, _dictionary[type].factory);
     }
 
 
 }
 
-public enum ProyectileType
+public enum ProyectileType //new one for PPM
 {
     straight
 }
 
 [System.Serializable]
-public struct ProyectileData
+public struct ProyectileData //new one for PPM
 {
     public ProyectileType type;
     public ProyectileAbstract proyectileObject;
