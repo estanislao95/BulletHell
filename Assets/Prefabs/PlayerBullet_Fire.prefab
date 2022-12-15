@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _speed: 5
+  _maxLife: 3
   _health: 1
   _lifeMaxTime: 0.75
   _lifeTimer: 0

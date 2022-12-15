@@ -11,6 +11,7 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
 
     [SerializeField] protected int _damage = 1;
     [SerializeField] protected float _speed = 1;
+    [SerializeField] protected int _maxLife = 1;
     [SerializeField] protected int _health = 1;
 
     [SerializeField] protected float _lifeMaxTime = 2;
@@ -19,6 +20,7 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
     public virtual void Activated()
     {
         _lifeTimer = _lifeMaxTime;
+        _health = _maxLife;
     }
 
     public virtual void Deactivated()
