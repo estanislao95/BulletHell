@@ -10,13 +10,15 @@ public class EnemyHandler : MonoBehaviour
 
     public List<EnemyAbstract> waveEnemyList = new List<EnemyAbstract>();
 
+    bool hasStarted = false; //TEMP.
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))  //TEMP. BORRAR PREVIO A ENTREGA.
+        if (Input.GetKeyDown(KeyCode.E) && !hasStarted)  //TEMP. BORRAR PREVIO A ENTREGA.
         {
             //SpawnEnemy(transform, EnemyType.basic);
 
             WaveStart(waves[currentWave]);
+            hasStarted = true;
         }
     }
 
