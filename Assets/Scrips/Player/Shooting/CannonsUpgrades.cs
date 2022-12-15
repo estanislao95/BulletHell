@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
 {
-    public static List<ICannonUpgrades> upgrades = new List<ICannonUpgrades>();
+    //public static List<ICannonUpgrades> upgrades = new List<ICannonUpgrades>();
 
 
     public List<Transform> Points;
@@ -12,7 +12,7 @@ public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
 
     private void Awake()
     {
-        upgrades.Add(this);
+        //upgrades.Add(this);
         foreach (Transform point in gameObject.GetComponentInChildren<Transform>())
         {
             Points.Add(point);

@@ -5,12 +5,12 @@ using UnityEngine;
 public class Cannons : MonoBehaviour, IUpgrades
 {
 
-    public List<ICannonUpgrades> _cannons = CannonsUpgrades.upgrades;
+    public List<CannonsUpgrades> _cannons;
 
     [SerializeField]
     float timer, MaxTimer;
     [SerializeField]
-    int timermultipler, cannonLevels;
+    int timermultipler;
 
     AbstractPowerup powerup;
 
