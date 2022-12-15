@@ -6,20 +6,19 @@ using UnityEngine;
 public class ProyectileManager : ProyectileManagerAbstract
 {
 
-    public static ProyectileManager instance; //new for PPM
+    public static ProyectileManager instance; 
 
     [SerializeField]
-    ProyectileData[] _proyectileObject; //new for PPM, this would be unused.
-    Dictionary<ProyectileType, ProyectileData> _dictionary = new Dictionary<ProyectileType, ProyectileData>(); //new for PPM, this would be unused.
+    ProyectileData[] _proyectileObject; 
+    Dictionary<ProyectileType, ProyectileData> _dictionary = new Dictionary<ProyectileType, ProyectileData>(); 
 
-    private void Awake() //override this for PPM
+    private void Awake() 
     {
         instance = this;
 
 
         for (int i = 0; i < _proyectileObject.Length; i++)
         {
-            //_proyectileObject[i].factory = new Factory<ProyectileAbstract>(_proyectileObject[i].Drop, TurnOn, TurnOff, _proyectileObject[i].stock);
             _proyectileObject[i].factory = FactoryBuild(_proyectileObject[i].Drop, TurnOn, TurnOff, _proyectileObject[i].stock);
             _dictionary.Add(_proyectileObject[i].type, _proyectileObject[i]);
         }
@@ -28,12 +27,12 @@ public class ProyectileManager : ProyectileManagerAbstract
     }
 
 
-    public void SpawnProyectile(Transform t, ProyectileType type) //new for PPM, needs different parameters
+    public void SpawnProyectile(Transform t, ProyectileType type) 
     {
         AbstractSpawnProyectile(t, _dictionary[type].factory);
     }
 
-    public Factory<ProyectileAbstract> AddToPool(ProyectileAbstract bullet, ProyectileType type)  //new for PPM, needs different parameters
+    public Factory<ProyectileAbstract> AddToPool(ProyectileAbstract bullet, ProyectileType type) 
     {
         return AbstractAddToPool(bullet, _dictionary[type].factory);
     }
@@ -41,13 +40,13 @@ public class ProyectileManager : ProyectileManagerAbstract
 
 }
 
-public enum ProyectileType //new one for PPM
+public enum ProyectileType
 {
     straight
 }
 
 [System.Serializable]
-public struct ProyectileData //new one for PPM
+public struct ProyectileData 
 {
     public ProyectileType type;
     public ProyectileAbstract proyectileObject;

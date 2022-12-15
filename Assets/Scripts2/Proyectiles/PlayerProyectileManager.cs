@@ -5,10 +5,7 @@ using UnityEngine;
 //Santiago R. D'Angelo
 public class PlayerProyectileManager : ProyectileManagerAbstract
 {
-    //Este codigo repite partes del Proyectile Manager, especialmente en contenido... Sin embargo las funciones usan parametros o variables que
-    //no se pueden sobreescribir en heredacion. Sin embargo, capaz habra una forma de optimizarlo?
-    //Capaz podemos isolar los contenidos neutrales en nuevas funciones que admiten parametros ProyectileType y PlaterProyectileType, o ProyectileData y PlayerProyectileData.
-
+    
     public static PlayerProyectileManager instance; 
 
     [SerializeField]
@@ -43,13 +40,13 @@ public class PlayerProyectileManager : ProyectileManagerAbstract
 
 }
 
-public enum PlayerProyectileType //new one for PPM
+public enum PlayerProyectileType 
 {
     straight
 }
 
 [System.Serializable]
-public struct PlayerProyectileData //new one for PPM
+public struct PlayerProyectileData 
 {
     public PlayerProyectileType type;
     public ProyectileAbstract proyectileObject;
