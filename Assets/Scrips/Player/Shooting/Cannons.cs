@@ -25,7 +25,7 @@ public class Cannons : MonoBehaviour, IUpgrades
     {
         timer += timermultipler * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             int tepm = cannonLevels;
 
@@ -40,7 +40,7 @@ public class Cannons : MonoBehaviour, IUpgrades
                 cannonLevels = tepm;
             }
             return;
-        }
+        }*/
 
 
         if (Input.GetKey(KeyCode.Space) && timer >= MaxTimer)
@@ -55,8 +55,16 @@ public class Cannons : MonoBehaviour, IUpgrades
     {
         powerup = pwr;
         //player aplica decorator
+        CheckCannonLevels();
     }
 
+    public void CheckCannonLevels()//temp?
+    {
+        if (powerup.getCannonLevel() > _cannons.Count - 1)
+        {
+            powerup.cannonLevel = _cannons.Count - 1;
+        }
+    }
     public AbstractPowerup getPowerup()
     {
         return powerup;

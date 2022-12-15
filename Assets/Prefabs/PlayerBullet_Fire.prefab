@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _speed: 5
+  _speed: 4
   _maxLife: 3
   _health: 1
-  _lifeMaxTime: 0.75
+  _lifeMaxTime: 1.25
   _lifeTimer: 0
 --- !u!1 &5261796843247727784
 GameObject:
