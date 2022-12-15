@@ -42,7 +42,8 @@ public class PlayerProyectileManager : ProyectileManagerAbstract
 
 public enum PlayerProyectileType 
 {
-    straight
+    straight,
+    fire
 }
 
 [System.Serializable]

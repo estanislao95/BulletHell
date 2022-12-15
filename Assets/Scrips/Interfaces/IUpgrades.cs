@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IUpgrades
 {
-    void Upgrades(int point);
+    void Upgrades(PowerupDecorator pwr);
+
+    AbstractPowerup getPowerup();
 }

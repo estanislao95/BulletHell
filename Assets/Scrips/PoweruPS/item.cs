@@ -2,36 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class item : MonoBehaviour
+public abstract class item : MonoBehaviour
 {
-    [SerializeField]
-    int ups = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Cannons entity = collision.GetComponent<Cannons>();
+        SomethingEnter(collision);
+
+    }
+
+    public void SomethingEnter(Collider2D collision)
+    {
+        IUpgrades entity = collision.GetComponent<IUpgrades>();
 
         if (entity != null)
         {
-            Debug.Log("a");
-            entity.Upgrades(ups);
+            UpgradePlayer(entity);
             Destroy(this.gameObject);
         }
-
     }
 
+    public virtual void UpgradePlayer(IUpgrades entity)
+    {
+        //entity.Upgrades(new FireShot(entity.getPowerup())); //TEMP.
+
+    }
 
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICannonUpgrades
 {
-    public void shooting();
+    public void shooting(PlayerProyectileType type);
 }

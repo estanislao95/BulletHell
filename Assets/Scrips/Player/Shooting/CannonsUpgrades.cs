@@ -8,7 +8,7 @@ public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
 
 
     public List<Transform> Points;
-    public PlayerProyectileType type;
+    //public PlayerProyectileType type;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class CannonsUpgrades : MonoBehaviour, ICannonUpgrades
 
     }
 
-    public void shooting()
+    public void shooting(PlayerProyectileType type)
     {
         foreach (var item in Points)
         {

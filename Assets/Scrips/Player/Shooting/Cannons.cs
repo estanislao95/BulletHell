@@ -10,14 +10,14 @@ public class Cannons : MonoBehaviour, IUpgrades
     [SerializeField]
     float timer, MaxTimer;
     [SerializeField]
-    int timermultipler, upgrade;
-    
+    int timermultipler, cannonLevels;
 
+    AbstractPowerup powerup;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerup = new RegularShot();
     }
 
     // Update is called once per frame
@@ -27,17 +27,17 @@ public class Cannons : MonoBehaviour, IUpgrades
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            int tepm = upgrade;
+            int tepm = cannonLevels;
 
             tepm++;
 
             if (tepm > _cannons.Count - 1)
             {
-                upgrade = _cannons.Count - 1;
+                cannonLevels = _cannons.Count - 1;
             }
             else
             {
-                upgrade = tepm;
+                cannonLevels = tepm;
             }
             return;
         }
@@ -45,25 +45,20 @@ public class Cannons : MonoBehaviour, IUpgrades
 
         if (Input.GetKey(KeyCode.Space) && timer >= MaxTimer)
         {
-            _cannons[upgrade].shooting();
+            _cannons[powerup.cannonLevel].shooting(powerup.type);
             timer = 0;
         }
     }
 
 
-    public void Upgrades(int up)
+    public void Upgrades(PowerupDecorator pwr)
     {
-        int tepm = upgrade;
+        powerup = pwr;
+        //player aplica decorator
+    }
 
-        tepm += up;
-
-        if (tepm > _cannons.Count - 1)
-        {
-            upgrade = _cannons.Count - 1;
-        }
-        else
-        {
-            upgrade = tepm;
-        }
+    public AbstractPowerup getPowerup()
+    {
+        return powerup;
     }
 }
