@@ -8,7 +8,7 @@ public class Model : Ilife
     Transform _transform;
     float _speed = FlyweightPointer.Player.speed;
     public event Action hit;
-
+    public event Action dead;
 
     float miny;
     float maxy;
@@ -62,7 +62,7 @@ public class Model : Ilife
 
     public void Dead()
     {
-
+        dead?.Invoke();
     }
 
 }

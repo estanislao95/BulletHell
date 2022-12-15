@@ -12,15 +12,18 @@ public class Player : MonoBehaviour, Ilife
 
     [SerializeField]
     float miny, maxy, minx, maxx;
-
+    
+    [SerializeField]
+    string hit, dead;
 
     void Start()
     {
         _model = new Model(transform, miny, maxy, minx, maxx);
-        _view = new View();
+        _view = new View(hit, dead);
         _controler = new Controler(_model);
 
         _model.hit += _view.Hit;
+        _model.dead += _view.Dead;
     }
     private void Update()
     {
