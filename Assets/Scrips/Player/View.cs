@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class View
 {
+    string hit;
+    string dead;
+
+    public View(string _hit, string _dead)
+    {
+        hit = _hit;
+        dead = _dead;
+    }
+
     public void Hit()
     {
-        Debug.Log("ACTUALIZO BARRA DE VIDA");
-        Debug.Log("TIRO PARTICULAS");
-        Debug.Log("PLAY SONIDO");
+        AudioManager.instance.Play(hit);
+    }
+
+    public void Dead()
+    {
+        AudioManager.instance.Play(dead);
     }
 }
