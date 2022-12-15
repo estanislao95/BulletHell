@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Santiago R. D'Angelo
 public class EnemyManager : MonoBehaviour
 {
 
@@ -37,6 +38,21 @@ public class EnemyManager : MonoBehaviour
 
     public void SpawnEnemy(Transform t, EnemyType type)
     {
+        /*EnemyType enemy = type;
+
+        print("spawning " + enemy.ToString());
+        var b = _dictionary[enemy].factory.GetObject();
+        b.Create(_dictionary[enemy].factory);
+        b.transform.position = t.position;
+        b.transform.rotation = t.rotation;*/
+
+        EnemyAbstract enem = SpawnAndSaveEnemy(t, type); //REVISAR - que tan optimo es esto? Es mas optimo guardar una variable temporal que capaz no se use,
+                                                         // o duplicar un codigo dos veces?
+
+    }
+
+    public EnemyAbstract SpawnAndSaveEnemy(Transform t, EnemyType type)
+    {
         EnemyType enemy = type;
 
         print("spawning " + enemy.ToString());
@@ -45,6 +61,7 @@ public class EnemyManager : MonoBehaviour
         b.transform.position = t.position;
         b.transform.rotation = t.rotation;
 
+        return b;
     }
 
     public Factory<EnemyAbstract> AddToPool(EnemyAbstract enemy, EnemyType type)

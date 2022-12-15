@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Santiago R. D'Angelo y Alejandro Caffarena
 public class Bullet : ProyectileAbstract
 {
 

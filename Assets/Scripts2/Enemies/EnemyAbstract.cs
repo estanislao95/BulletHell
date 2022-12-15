@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Santiago R. D'Angelo
 public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, Ilife
 {
     protected Factory<EnemyAbstract> _referenceBack;
@@ -14,6 +15,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
 
     [SerializeField] protected ProyectileType _proyectileType;
 
+    protected EnemyHandler _eh;
     public virtual void Activated()
     {
         
@@ -22,6 +24,9 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     public virtual void Deactivated()
     {
         _referenceBack.ReturnObject(this);
+
+        if (_eh != null)
+            returnToHandler(_eh);
     }
 
     #region Damage
@@ -68,6 +73,23 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
         gameObject.SetActive(true);
         Activated();
     }
+    #endregion
+
+    #region Wave
+    //para cuando queremos hacer olas basadas en la cantidad de enemigos destruidos, con esto nos aseguramos que mataron a todos los enemigos.
+    //capaz simplemente un int seria mejor.
+
+     public void assignHandler(EnemyHandler eh)
+     {
+     _eh = eh;
+     }
+
+    public void returnToHandler(EnemyHandler eh)
+    {
+    eh.EnemyKilled(this);
+    }
+
+    
     #endregion
 
 }

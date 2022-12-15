@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proyectileObject:
   - type: 0
-    proyectileObject: {fileID: 6962147129893690449, guid: 7be25a09bea098b4da16555d48c5c3a6, type: 3}
+    proyectileObject: {fileID: 1707935229653422159, guid: 7be25a09bea098b4da16555d48c5c3a6, type: 3}
     stock: 5
 --- !u!4 &1909368805
 Transform:
