@@ -27,7 +27,7 @@ public abstract class ProyectileManagerAbstract : MonoBehaviour
         b.Create(factory);
         b.transform.position = t.position;
         b.transform.rotation = t.rotation;
-
+        b.Activated();
     }
 
     protected Factory<ProyectileAbstract> AbstractAddToPool(ProyectileAbstract bullet, Factory<ProyectileAbstract> factory)

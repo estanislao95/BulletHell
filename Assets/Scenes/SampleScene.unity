@@ -2114,10 +2114,10 @@ MonoBehaviour:
   _proyectileObject:
   - type: 0
     proyectileObject: {fileID: 1707935229653422159, guid: 7be25a09bea098b4da16555d48c5c3a6, type: 3}
-    stock: 1
+    stock: 600
   - type: 1
     proyectileObject: {fileID: 1707935229653422159, guid: 04f9a0002577b264db5d64be8353eb8f, type: 3}
-    stock: 1
+    stock: 600
 --- !u!1 &1924436504
 GameObject:
   m_ObjectHideFlags: 0

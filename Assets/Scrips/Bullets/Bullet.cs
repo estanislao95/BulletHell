@@ -10,7 +10,7 @@ public class Bullet : ProyectileAbstract
 
     protected virtual void Start()
     {
-        Activated();
+        //Activated();
         //_chosenStrategy = new SineMovement(transform, transform.up, transform.right, _speed, 3, 0.25f);
     }
     private void Update()
