@@ -14,8 +14,24 @@ public class StraightMovement : IMovement
         _speed = speed;
         _dir = dir;
     }
+
+    #region Timer
+    public void SetTimer(float t)
+    {
+        
+    }
+    public float GetTimer()
+    {
+        return 0;
+    }
+    #endregion
+
     public void Move()
     {
         _transform.position += _dir * _speed * Time.deltaTime;
+    }
+
+    public void SetAnim(CharacterAnimator anim)
+    {
     }
 }
