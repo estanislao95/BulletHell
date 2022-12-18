@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy : EnemyAbstract
 {
+    [SerializeField] float shootFrequency = 1;
     protected virtual void Start()
     {
         Activated();
 
-        _chosenStrategy = new StraightMovement(transform, -transform.up, _speed);
+        _chosenStrategy = new Enemy_SegmentedMovement(transform, -transform.up, Shoot, _speed * 2, _speed, shootFrequency);
+        //_chosenStrategy = new Enemy_StraightMovement(transform, -transform.up, Shoot, _speed, shootFrequency);
         //_chosenStrategy = new SineMovement(transform, transform.up, transform.right, _speed, 3, 0.25f);
     }
 

@@ -15,6 +15,8 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
 
     [SerializeField] protected ProyectileType _proyectileType;
 
+    [SerializeField] EnemyCannon[] _cannons;
+
     protected EnemyHandler _eh;
     public int DeadPoints;
     public virtual void Activated()
@@ -29,6 +31,16 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
         if (_eh != null)
             ReturnToHandler(_eh);
     }
+
+    #region Shoot
+    public void Shoot(ProyectileType type)
+    {
+        foreach (var item in _cannons)
+        {
+            item.Shoot(type);
+        }
+    }
+    #endregion
 
     #region Damage
     public virtual void Damage(int life)
