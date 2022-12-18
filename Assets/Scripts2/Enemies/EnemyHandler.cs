@@ -109,7 +109,7 @@ public class EnemyHandler : MonoBehaviour, IObservableFloat
 
     public void restartwave()
     {
-
+        currentWave = 0;
     }
 
     #endregion

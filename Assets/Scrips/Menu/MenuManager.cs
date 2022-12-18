@@ -72,7 +72,7 @@ public class MenuManager : Menu
         ContinueTime();
         RestartGame.Instance.restart();
         EnemyHandler.instance.WaveStart(EnemyHandler.instance.waves[0]);
-        EnemyHandler.instance.currentWave = 0;
+        
         UIManager.Instance.wavecounter(0);
         AudioManager.instance.Play(GameMusic, true);
     }
