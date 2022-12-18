@@ -26,25 +26,6 @@ public class Cannons : MonoBehaviour, IUpgrades
     void Update()
     {
         timer += timermultipler * Time.deltaTime;
-
-        /*if (Input.GetKeyDown(KeyCode.Q))
-        {
-            int tepm = cannonLevels;
-
-            tepm++;
-
-            if (tepm > _cannons.Count - 1)
-            {
-                cannonLevels = _cannons.Count - 1;
-            }
-            else
-            {
-                cannonLevels = tepm;
-            }
-            return;
-        }*/
-
-
         if (Input.GetKey(KeyCode.Space) && timer >= MaxTimer)
         {
             AudioManager.instance.Play(Player_Shoot);

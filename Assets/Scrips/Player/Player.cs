@@ -8,21 +8,24 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
     Model _model;
     View _view;
     Controler _controler;
-
+    [SerializeField] int life;
 
     [SerializeField]
     float miny, maxy, minx, maxx;
     
     [SerializeField]
     string hit, dead;
+    [SerializeField]
+    float MaxIframes;
 
     [SerializeField]
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
 
     void Start()
     {
+        life = FlyweightPointer.Player.maxLife;
 
-        _model = new Model(transform, miny, maxy, minx, maxx, _allObservers);
+        _model = new Model(life, transform, miny, maxy, minx, maxx, _allObservers, MaxIframes);
         _view = new View(hit, dead);
         _controler = new Controler(_model);
 

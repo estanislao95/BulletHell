@@ -17,6 +17,7 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
     [SerializeField] protected float _lifeMaxTime = 2;
     [SerializeField] protected float _lifeTimer = 0;
 
+    [SerializeField] protected ParticleType _particletype;
     public virtual void Activated()
     {
         _lifeTimer = _lifeMaxTime;
@@ -43,6 +44,7 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
     #region Damage
     public virtual void Damage(int life)
     {
+        ParticleManager.instance.SpawnParticle(transform, _particletype);
         _health -= life;
         if (_health <= 0)
         {

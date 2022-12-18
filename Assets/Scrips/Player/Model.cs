@@ -4,39 +4,54 @@ using UnityEngine;
 
 public class Model : Ilife, IObservableFloat
 {
-    int _life = FlyweightPointer.Player.maxLife;
+    int _life;
     Transform _transform;
     float _speed = FlyweightPointer.Player.speed;
     public event Action hit;
     public event Action dead;
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
+    float _MaxIframes;
+    bool invensivility;
+    float timer;
 
     float miny;
     float maxy;
     float minx;
     float maxx;
 
-    public Model(Transform transform,float _miny, float _maxy, float _minx, float _maxx, List<IObserverFloat> allObservers)
+    public Model(int life ,Transform transform,float _miny, float _maxy, float _minx, float _maxx, List<IObserverFloat> allObservers, float MaxIframes)
     {
+        _life = life;
         _transform = transform;
         _allObservers = allObservers;
         miny = _miny;
         maxy = _maxy;
         minx = _minx;
         maxx = _maxx;
+        _MaxIframes = MaxIframes;
     }
 
 
 
     public void Move(float h, float v)
     {
+         
         var dir = _transform.up * v;
         dir += _transform.right * h;
         dir.z = 0;
 
         _transform.position = pos(_transform.position) + dir * _speed * Time.deltaTime;
 
+        if (invensivility)
+        {
+            timer += Time.deltaTime;
+            if (timer >= _MaxIframes)
+            {
+                invensivility = false;
+                timer = 0;
+            }
 
+        }
 
     }
 
@@ -52,8 +67,12 @@ public class Model : Ilife, IObservableFloat
 
     public void Damage(int dmg)
     {
+        if (invensivility)
+            return;
         _life -= dmg;
+        invensivility = true;
 
+        Debug.Log(_life);
         hit?.Invoke();
         NotifyToObserver(dmg);
         if (_life <= 0)
