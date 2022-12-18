@@ -10,10 +10,13 @@ public class EnemyHandler : MonoBehaviour, IObservableFloat
     [SerializeField]
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
     public List<EnemyAbstract> waveEnemyList = new List<EnemyAbstract>();
+    public static EnemyHandler instance;
 
     bool hasStarted = false; //TEMP.
     public void Start()
     {
+        instance = this;
+        RestartGame.Instance.handler = this;
         NotifyToObserver(currentWave);
     }
 
@@ -101,7 +104,12 @@ public class EnemyHandler : MonoBehaviour, IObservableFloat
 
     public void LastWaveFinished()
     {
-        print("good job! u beat the game");
+        MenuManager.instance.Win();
+    }
+
+    public void restartwave()
+    {
+
     }
 
     #endregion

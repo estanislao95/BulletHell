@@ -57,13 +57,14 @@ public class Model : Ilife, IObservableFloat
         hit?.Invoke();
         NotifyToObserver(dmg);
         if (_life <= 0)
-            Debug.Log("GAME OVER");
+            Dead();
     }
     
 
     public void Dead()
     {
         dead?.Invoke();
+        MenuManager.instance.Dead();
     }
 
 

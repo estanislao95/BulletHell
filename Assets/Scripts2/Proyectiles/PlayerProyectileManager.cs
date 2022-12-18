@@ -43,7 +43,9 @@ public class PlayerProyectileManager : ProyectileManagerAbstract
 public enum PlayerProyectileType 
 {
     straight,
-    fire
+    fire,
+    Lazer,
+    rocket
 }
 
 [System.Serializable]

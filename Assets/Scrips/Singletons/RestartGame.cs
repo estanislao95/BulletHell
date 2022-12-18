@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class RestartGame : Singleton<RestartGame>
 {
-    public int Points;
     public Player player;
+    public Transform resetpoint;
+    public EnemyHandler handler;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameManager.Instance.player;
+
     }
 
     // Update is called once per frame
@@ -19,11 +21,12 @@ public class GameManager : Singleton<GameManager>
         
     }
 
-    public void addpoints(int points)
+    public void restart()
     {
-        Points += points;
-        UIManager.Instance.pointcounter(Points);
+        player.transform.position = resetpoint.position;
+        handler.restartwave();
+
     }
 
-    
+
 }

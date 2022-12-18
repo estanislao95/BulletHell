@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    public Image _Lifebar;
-    public Text _wavecounter;
-    public Text _PointCounter;
+    [SerializeField] Image _Lifebar;
+    [SerializeField] Text _wavecounter;
+    [SerializeField] Text _PointCounter;
+
+
+
+    [SerializeField] ConfirmScreen confirmScreen;
     public void Lifebar(float fill)
     {
         _Lifebar.fillAmount = fill;
@@ -21,6 +25,16 @@ public class UIManager : Singleton<UIManager>
 
     public void pointcounter(int points)
     {
-        _PointCounter.text = "points " + points;
+        _PointCounter.text = "Points " + points;
     }
+
+    public ConfirmScreen ConfirmScreen()
+    {
+        return confirmScreen;
+    }
+    public void PushConfirmScreen()
+    {
+        ScreenManager.instance.Push(confirmScreen);
+    }
+
 }

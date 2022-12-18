@@ -11,6 +11,8 @@ public class Cannons : MonoBehaviour, IUpgrades
     float timer, MaxTimer;
     [SerializeField]
     int timermultipler;
+    [SerializeField]
+    string Player_Shoot, Player_Upgrade;
 
     AbstractPowerup powerup;
 
@@ -45,6 +47,7 @@ public class Cannons : MonoBehaviour, IUpgrades
 
         if (Input.GetKey(KeyCode.Space) && timer >= MaxTimer)
         {
+            AudioManager.instance.Play(Player_Shoot);
             _cannons[powerup.cannonLevel].shooting(powerup.type);
             timer = 0;
         }
@@ -54,6 +57,8 @@ public class Cannons : MonoBehaviour, IUpgrades
     public void Upgrades(PowerupDecorator pwr)
     {
         powerup = pwr;
+        AudioManager.instance.Play(Player_Upgrade);
+        MaxTimer = pwr.firerate;
         //player aplica decorator
         CheckCannonLevels();
     }

@@ -7,6 +7,7 @@ public class MultiShot : PowerupDecorator
     public MultiShot(AbstractPowerup pwr) : base(pwr)
     {
         type = pwr.type;
+        firerate = pwr.firerate;
         cannonLevel = pwr.cannonLevel + 1;
         _powerup = pwr;
     }
@@ -18,5 +19,10 @@ public class MultiShot : PowerupDecorator
     public override PlayerProyectileType getShotType()
     {
         return type;
+    }
+
+    public override float getfirerate()
+    {
+        return firerate;
     }
 }

@@ -19,4 +19,9 @@ public class RegularShot : AbstractPowerup
     {
         return type;
     }
+
+    public override float getfirerate()
+    {
+        return firerate;
+    }
 }

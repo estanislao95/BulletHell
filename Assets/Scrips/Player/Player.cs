@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
 
     void Start()
     {
+
         _model = new Model(transform, miny, maxy, minx, maxx, _allObservers);
         _view = new View(hit, dead);
         _controler = new Controler(_model);
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
 
     public void Dead()
     {
-
+        //unused
     }
 
     public void Subscribe(IObserverFloat obs)

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireShot : PowerupDecorator
+public class RockjetShot : PowerupDecorator
 {
-    public FireShot(AbstractPowerup pwr) : base(pwr)
+    public RockjetShot(AbstractPowerup pwr) : base(pwr)
     {
-        type = PlayerProyectileType.fire;
-        firerate = 1.6f;
+        type = PlayerProyectileType.rocket;
+        firerate = 6.1f;
         cannonLevel = pwr.cannonLevel;
         _powerup = pwr;
     }

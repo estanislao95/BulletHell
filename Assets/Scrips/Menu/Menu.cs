@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
 
         Screens[currScreen].Show();
     }
-    private void Update()
+    protected virtual void Update()
     {
 
     }

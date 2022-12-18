@@ -15,6 +15,8 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
 
     [SerializeField] protected ProyectileType _proyectileType;
 
+    [SerializeField] string EnemyHurt, EnemyDie;
+
     protected EnemyHandler _eh;
     public int DeadPoints;
     public virtual void Activated()
@@ -34,6 +36,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     public virtual void Damage(int life)
     {
         _health -= life;
+        AudioManager.instance.Play(EnemyHurt);
         if (_health <= 0)
         {
             Dead();
@@ -43,6 +46,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     public virtual void Dead()
     {
         Deactivated();
+        AudioManager.instance.Play(EnemyDie);
     }
     #endregion
 
