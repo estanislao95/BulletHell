@@ -24,6 +24,8 @@ public class Enemy_SegmentedMovement : Enemy_Movement
 
     float _time_phase_1 = 1;
     float _time_phase_2 = 3;
+
+    
     public Enemy_SegmentedMovement(Transform transform, Vector3 dir, ShootMethod shoot, float startSpeed = 2, float exitSpeed = 1, float frequency = 1)
     {
         _transform = transform;
@@ -33,6 +35,8 @@ public class Enemy_SegmentedMovement : Enemy_Movement
         _shoot = shoot;
         _frequency = frequency;
     }
+
+    
 
     public override void Move()
     {
@@ -56,23 +60,50 @@ public class Enemy_SegmentedMovement : Enemy_Movement
     {
         _transform.position += _dir * _startSpeed * Time.deltaTime;
         timer += Time.deltaTime;
+
+        if (_anim != null)
+            _anim.Move();
+
         if (timer > _time_phase_1)
             _phase = Phase.stop;
+
     }
 
     void Phase2()
     {
         timer += Time.deltaTime;
 
-        if (timer % _frequency == 0)
+        Debug.Log(timer % _frequency);
+
+        if (_anim != null)
+            _anim.Stop();
+
+        if (timer % _frequency <= 0.1f)
+        {
+            _anim.Shoot();
             _shoot(_type);
+        }
 
         if (timer > _time_phase_2)
             _phase = Phase.exit;
+
     }
 
     void Phase3()
     {
         _transform.position += _dir * _exitSpeed * Time.deltaTime;
+
+        if (_anim != null)
+            _anim.Move();
+    }
+
+    public override void SetTimer(float t)
+    {
+        timer = t;
+    }
+
+    public override  float GetTimer()
+    {
+        return timer;
     }
 }

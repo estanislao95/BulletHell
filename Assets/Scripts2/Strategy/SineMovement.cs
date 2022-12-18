@@ -42,4 +42,19 @@ public class SineMovement : IMovement
 
         Debug.Log(timer);
     }
+
+    #region Timer
+    public void SetTimer(float t)
+    {
+        timer = t;
+    }
+    public float GetTimer()
+    {
+        return timer;
+    }
+    #endregion
+
+    public void SetAnim(CharacterAnimator anim)
+    {
+    }
 }

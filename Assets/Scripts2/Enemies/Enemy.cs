@@ -5,14 +5,27 @@ using UnityEngine;
 public class Enemy : EnemyAbstract
 {
     [SerializeField] float shootFrequency = 1;
+
+
+    #region Preparation
     protected virtual void Start()
     {
-        Activated();
-
-        _chosenStrategy = new Enemy_SegmentedMovement(transform, -transform.up, Shoot, _speed * 2, _speed, shootFrequency);
-        //_chosenStrategy = new Enemy_StraightMovement(transform, -transform.up, Shoot, _speed, shootFrequency);
-        //_chosenStrategy = new SineMovement(transform, transform.up, transform.right, _speed, 3, 0.25f);
+        Prepare();
     }
+
+    public override void Prepare()
+    {
+        base.Prepare();
+        DefaultStrategy();
+    }
+
+    public override void DefaultStrategy()
+    {
+        ChangeStrategy(new Enemy_SegmentedMovement(transform, -transform.up, Shoot, _speed * 2, _speed, shootFrequency));
+    }
+
+    #endregion
+
 
     private void Update()
     {
@@ -28,4 +41,5 @@ public class Enemy : EnemyAbstract
             target.Damage(_damage);
         }
     }
+
 }

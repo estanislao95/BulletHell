@@ -57,9 +57,10 @@ public class EnemyManager : MonoBehaviour
 
         print("spawning " + enemy.ToString());
         var b = _dictionary[enemy].factory.GetObject();
-        b.Create(_dictionary[enemy].factory);
         b.transform.position = t.position;
         b.transform.rotation = t.rotation;
+        b.Create(_dictionary[enemy].factory);
+        b.Prepare();
 
         return b;
     }

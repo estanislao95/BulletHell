@@ -9,6 +9,8 @@ public abstract class Enemy_Movement : IMovement
     protected ProyectileType _type = ProyectileType.straight;
 
     protected ShootMethod _shoot;
+
+    protected CharacterAnimator _anim;
     public void ShotType(ProyectileType type)
     {
         _type = type;
@@ -17,4 +19,22 @@ public abstract class Enemy_Movement : IMovement
     {
         //
     }
+
+
+    public void SetAnim(CharacterAnimator anim)
+    {
+        _anim = anim;
+    }
+
+    #region Timer
+    public virtual void SetTimer(float t)
+    {
+
+    }
+    public virtual float GetTimer()
+    {
+        return 0;
+    }
+
+    #endregion
 }
