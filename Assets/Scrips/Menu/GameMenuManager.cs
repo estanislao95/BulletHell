@@ -61,6 +61,7 @@ public class GameMenuManager : Menu
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.ContinueTime();
     }
 
     public void ButtonNoice()
