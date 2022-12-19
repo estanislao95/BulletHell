@@ -112,6 +112,10 @@ MonoBehaviour:
   _anim: {fileID: 1753748783303411721}
   DeadPoints: 10
   shootFrequency: 0.5
+  phases:
+  - 2
+  - 3
+  - 1
 --- !u!61 &2532717123117412148
 BoxCollider2D:
   m_ObjectHideFlags: 0
