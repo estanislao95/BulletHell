@@ -68,12 +68,17 @@ public class MenuManager : Menu
 
     public void start()
     {
+<<<<<<< Updated upstream
         changeScreen(_Game);
         ContinueTime();
         RestartGame.Instance.restart();
         EnemyHandler.instance.WaveStart(EnemyHandler.instance.waves[0]);
         
         UIManager.Instance.wavecounter(0);
+=======
+        GameManager.Instance.ContinueTime();
+        GameManager.Instance.SceneRandom();
+>>>>>>> Stashed changes
         AudioManager.instance.Play(GameMusic, true);
     }
     public void exit()
