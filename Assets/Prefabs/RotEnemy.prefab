@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _maxHealth: 1
+  _maxHealth: 4
   _health: 4
   _speed: 1
   _maxIFrames: 0.1
