@@ -105,11 +105,13 @@ MonoBehaviour:
   _speed: 1
   _maxIFrames: 0.5
   _proyectileType: 0
+  EnemyHurt: Enemy_hit
+  EnemyDie: Enemy_Dead
   _cannons:
   - {fileID: 8274313604201672662}
   _anim: {fileID: 1753748783303411721}
   DeadPoints: 10
-  shootFrequency: 1
+  shootFrequency: 0.5
 --- !u!61 &2532717123117412148
 BoxCollider2D:
   m_ObjectHideFlags: 0

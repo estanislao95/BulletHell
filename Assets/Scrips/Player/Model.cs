@@ -72,7 +72,7 @@ public class Model : Ilife, IObservableFloat
         _life -= dmg;
         invensivility = true;
 
-        Debug.Log(_life);
+        Debug.Log("current life " + _life);
         hit?.Invoke();
         NotifyToObserver(dmg);
         if (_life <= 0)

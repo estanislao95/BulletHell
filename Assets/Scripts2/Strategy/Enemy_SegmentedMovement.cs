@@ -14,17 +14,18 @@ public class Enemy_SegmentedMovement : Enemy_Movement
     {
         enter,
         stop,
-        exit
+        wait,
+        escape
+
     }
 
     Phase _phase = Phase.enter;
 
     float timer = 0;
+    float shootTimer = 0;
     float _frequency;
 
-    float _time_phase_1 = 1;
-    float _time_phase_2 = 3;
-
+    float[] _time_phase = { 2, 3, 1};
     
     public Enemy_SegmentedMovement(Transform transform, Vector3 dir, ShootMethod shoot, float startSpeed = 2, float exitSpeed = 1, float frequency = 1)
     {
@@ -34,6 +35,13 @@ public class Enemy_SegmentedMovement : Enemy_Movement
         _dir = dir;
         _shoot = shoot;
         _frequency = frequency;
+
+        float sum = 0;
+        for (int i = 0; i < _time_phase.Length; i++)
+        {
+            _time_phase[i] += sum;
+            sum += _time_phase[i];
+        }
     }
 
     
@@ -50,8 +58,12 @@ public class Enemy_SegmentedMovement : Enemy_Movement
                 Phase2();
                 return;
 
-            case Phase.exit:
+            case Phase.wait:
                 Phase3();
+                return;
+
+            case Phase.escape:
+                Phase4();
                 return;
         }
     }
@@ -64,37 +76,52 @@ public class Enemy_SegmentedMovement : Enemy_Movement
         if (_anim != null)
             _anim.Move();
 
-        if (timer > _time_phase_1)
+        if (timer > _time_phase[0])
+        {
+            shootTimer = 0;
             _phase = Phase.stop;
+        }
 
     }
 
     void Phase2()
     {
         timer += Time.deltaTime;
-
-        Debug.Log(timer % _frequency);
+        shootTimer += Time.deltaTime;
 
         if (_anim != null)
             _anim.Stop();
 
-        if (timer % _frequency <= 0.1f)
+        if (shootTimer >= _frequency)
         {
             _anim.Shoot();
             _shoot(_type);
+            shootTimer = 0;
         }
 
-        if (timer > _time_phase_2)
-            _phase = Phase.exit;
+        if (timer > _time_phase[1])
+        {
+            _phase = Phase.wait;
+            shootTimer = 0;
+        }
+            
 
     }
 
     void Phase3()
     {
-        _transform.position += _dir * _exitSpeed * Time.deltaTime;
+        timer += Time.deltaTime;
+        
 
-        if (_anim != null)
-            _anim.Move();
+        if (timer > _time_phase[2])
+        {
+            _phase = Phase.escape;
+        }
+    }
+
+    void Phase4()
+    {
+        _transform.position += _dir * _exitSpeed * Time.deltaTime;
     }
 
     public override void SetTimer(float t)
