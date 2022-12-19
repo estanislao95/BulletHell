@@ -125,11 +125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _speed: 4
+  _speed: 17
   _maxLife: 3
   _health: 1
   _lifeMaxTime: 1.25
   _lifeTimer: 0
+  _particletype: 0
 --- !u!1 &5206138764772011996
 GameObject:
   m_ObjectHideFlags: 0

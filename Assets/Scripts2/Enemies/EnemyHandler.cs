@@ -5,18 +5,23 @@ using UnityEngine;
 //Santiago R. D'Angelo
 public class EnemyHandler : MonoBehaviour, IObservableFloat
 {
+    public static EnemyHandler instance;
     public List<WaveData> waves;
     public int currentWave;
     [SerializeField]
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
     public List<EnemyAbstract> waveEnemyList = new List<EnemyAbstract>();
-    public static EnemyHandler instance;
+
 
     bool hasStarted = false; //TEMP.
-    public void Start()
+    public void Awake()
     {
         instance = this;
-        RestartGame.Instance.handler = this;
+    }
+
+    public void Start()
+    {
+        //WaveStart(waves[currentWave]);
         NotifyToObserver(currentWave);
     }
 
@@ -104,7 +109,7 @@ public class EnemyHandler : MonoBehaviour, IObservableFloat
 
     public void LastWaveFinished()
     {
-        MenuManager.instance.Win();
+        GameMenuManager.instance.Win();
     }
 
     public void restartwave()

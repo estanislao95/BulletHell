@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     [SerializeField] Image _Lifebar;
     [SerializeField] Text _wavecounter;
     [SerializeField] Text _PointCounter;
@@ -13,6 +15,12 @@ public class UIManager : Singleton<UIManager>
 
 
     [SerializeField] ConfirmScreen confirmScreen;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void Lifebar(float fill)
     {
         _Lifebar.fillAmount = fill;

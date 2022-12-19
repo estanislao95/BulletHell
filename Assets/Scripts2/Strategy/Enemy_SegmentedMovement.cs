@@ -73,7 +73,7 @@ public class Enemy_SegmentedMovement : Enemy_Movement
     {
         timer += Time.deltaTime;
 
-        Debug.Log(timer % _frequency);
+        //Debug.Log(timer % _frequency);
 
         if (_anim != null)
             _anim.Stop();

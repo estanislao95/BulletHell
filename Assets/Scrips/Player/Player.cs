@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
 
     void Start()
     {
+        GameManager.Instance.player = this;
         life = FlyweightPointer.Player.maxLife;
 
         _model = new Model(life, transform, miny, maxy, minx, maxx, _allObservers, MaxIframes);
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
 
         _model.hit += _view.Hit;
         _model.dead += _view.Dead;
+        _model.NotifyToObserver(life);
     }
     private void Update()
     {

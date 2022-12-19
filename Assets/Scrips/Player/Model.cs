@@ -29,6 +29,7 @@ public class Model : Ilife, IObservableFloat
         minx = _minx;
         maxx = _maxx;
         _MaxIframes = MaxIframes;
+
     }
 
 
@@ -74,7 +75,7 @@ public class Model : Ilife, IObservableFloat
 
         Debug.Log(_life);
         hit?.Invoke();
-        NotifyToObserver(dmg);
+        NotifyToObserver(_life);
         if (_life <= 0)
             Dead();
     }
@@ -83,7 +84,7 @@ public class Model : Ilife, IObservableFloat
     public void Dead()
     {
         dead?.Invoke();
-        MenuManager.instance.Dead();
+        GameMenuManager.instance.Dead();
     }
 
 

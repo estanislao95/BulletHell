@@ -7,7 +7,7 @@ public class FireShot : PowerupDecorator
     public FireShot(AbstractPowerup pwr) : base(pwr)
     {
         type = PlayerProyectileType.fire;
-        firerate = 1.6f;
+        firerate = 1.0f;
         cannonLevel = pwr.cannonLevel;
         _powerup = pwr;
     }

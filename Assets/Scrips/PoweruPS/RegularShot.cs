@@ -7,6 +7,7 @@ public class RegularShot : AbstractPowerup
     public RegularShot()
     {
         type = PlayerProyectileType.straight;
+        firerate = 1.4f;
         cannonLevel = 0;
     }
 

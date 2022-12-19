@@ -6,7 +6,6 @@ public class RestartGame : Singleton<RestartGame>
 {
     public Player player;
     public Transform resetpoint;
-    public EnemyHandler handler;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +23,7 @@ public class RestartGame : Singleton<RestartGame>
     public void restart()
     {
         player.transform.position = resetpoint.position;
-        handler.restartwave();
+        EnemyHandler.instance.restartwave();
 
     }
 
