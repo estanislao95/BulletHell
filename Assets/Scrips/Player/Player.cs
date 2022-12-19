@@ -19,18 +19,24 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
     [SerializeField]
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
 
+    [SerializeField] PlayerAnimator _anim;
+    [SerializeField] Cannons cannons;
+
     void Start()
     {
         GameManager.Instance.player = this;
         life = FlyweightPointer.Player.maxLife;
 
         _model = new Model(life, transform, _allObservers, MaxIframes);
-        _view = new View(hit, dead);
-        _controler = new Controler(_model);
+        _view = new View(hit, dead, _anim);
+        _controler = new Controler(_model, cannons);
 
         _model.hit += _view.Hit;
         _model.dead += _view.Dead;
+        _model.move += _view.Move;
+        _model.stop += _view.Stop;
         _model.NotifyToObserver(life);
+        cannons.shoot += _view.Shoot;
     }
     private void Update()
     {

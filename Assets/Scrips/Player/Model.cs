@@ -9,6 +9,8 @@ public class Model : Ilife, IObservableFloat
     float _speed = FlyweightPointer.Player.speed;
     public event Action hit;
     public event Action dead;
+    public event Action move;
+    public event Action stop;
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
     float _MaxIframes;
     bool invensivility;
@@ -32,6 +34,11 @@ public class Model : Ilife, IObservableFloat
         var dir = _transform.up * v;
         dir += _transform.right * h;
         dir.z = 0;
+
+        if (dir.magnitude > 0)
+            move?.Invoke();
+        else
+            stop?.Invoke();
 
         _transform.position = pos(_transform.position) + dir * _speed * Time.deltaTime;
 

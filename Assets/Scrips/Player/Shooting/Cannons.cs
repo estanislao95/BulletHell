@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Cannons : MonoBehaviour, IUpgrades
 {
@@ -16,6 +17,8 @@ public class Cannons : MonoBehaviour, IUpgrades
 
     AbstractPowerup powerup;
 
+    public event Action shoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +29,21 @@ public class Cannons : MonoBehaviour, IUpgrades
     void Update()
     {
         timer += timermultipler * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && timer >= MaxTimer)
+        
+    }
+
+    public void Shoot()
+    {
+        if (timer >= MaxTimer)
         {
             AudioManager.instance.Play(Player_Shoot);
             _cannons[powerup.cannonLevel].shooting(powerup.type);
             timer = 0;
+            shoot?.Invoke();
         }
     }
 
+    
 
     public void Upgrades(PowerupDecorator pwr)
     {

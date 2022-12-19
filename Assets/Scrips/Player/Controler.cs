@@ -5,10 +5,13 @@ using UnityEngine;
 public class Controler
 {
     Model _model;
+
+    Cannons _cannon;
     
-    public Controler(Model model)
+    public Controler(Model model, Cannons cannon)
     {
         _model = model;
+        _cannon = cannon;
     }
 
 
@@ -19,5 +22,10 @@ public class Controler
 
         if (h != 0 || v != 0)
             _model.Move(h, v);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _cannon.Shoot();
+        }
     }
 }
