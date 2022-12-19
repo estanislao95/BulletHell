@@ -21,7 +21,7 @@ public class EnemyHandler : MonoBehaviour, IObservableFloat
 
     public void Start()
     {
-        //WaveStart(waves[currentWave]);
+        WaveStart(waves[currentWave]);
         NotifyToObserver(currentWave);
     }
 
