@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : EnemyAbstract
 {
-    [SerializeField] protected float shootFrequency = 1;
 
     [SerializeField] protected float[] phases = { 1, 2 };
 
@@ -22,7 +21,7 @@ public class Enemy : EnemyAbstract
 
     public override void DefaultStrategy()
     {
-        Enemy_SegmentedMovement em = new Enemy_SegmentedMovement(transform, -transform.up, Shoot, _speed * 2, _speed, shootFrequency);
+        Enemy_SegmentedMovement em = new Enemy_SegmentedMovement(transform, -transform.up, Shoot, FlyweightPointer.EnemyCockroach.speed, FlyweightPointer.EnemyCockroach.exitSpeed, FlyweightPointer.EnemyCockroach.fireRate);
         //em.SetPhases(phases); //comentado por un error muy extraño error:
                                 //por alguna razon aumentaban los valores de phases cuando se spawneaban los clones
                                 //de 2, 3, 1 pasaba a 2, 7, 17. en inspector.

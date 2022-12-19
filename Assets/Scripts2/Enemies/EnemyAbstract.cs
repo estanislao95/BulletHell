@@ -10,11 +10,8 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     [SerializeField] protected IMovement _chosenStrategy;
 
     [SerializeField] protected int _damage = 1;
-    [SerializeField] protected int _maxHealth = 1;
     [SerializeField] protected int _health = 1;
-    [SerializeField] protected float _speed = 1;
 
-    [SerializeField] protected float _maxIFrames = 0.1f;
     protected bool _invencible;
     protected float _savedTimer = 0;
 
@@ -45,7 +42,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
 
     public virtual void Prepare()
     {
-        _health = _maxHealth;
+        _health = FlyweightPointer.Enemy.maxLife;
         _anim.Prepare();
     }
 
@@ -85,7 +82,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
         AudioManager.instance.Play(EnemyHurt);
         _invencible = true;
         _savedTimer = _chosenStrategy.GetTimer();
-        ChangeStrategy(new Knockback_Movement(Back, _maxIFrames));
+        ChangeStrategy(new Knockback_Movement(Back, FlyweightPointer.Enemy.IFrames));
     }
 
     public virtual void Back()

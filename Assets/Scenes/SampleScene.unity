@@ -3214,19 +3214,19 @@ MonoBehaviour:
   _pickUpObject:
   - type: 0
     pickupObject: {fileID: 5152000320379253415, guid: aa025b930d9f652489047b86f51d7a1f, type: 3}
-    weight: 10
+    weight: 5
   - type: 1
     pickupObject: {fileID: 2831545656130297286, guid: 2fac7c14f8074d54c88a83edbd687d04, type: 3}
-    weight: 2
+    weight: 5
   - type: 2
     pickupObject: {fileID: -4653326976148023991, guid: 4ae96b0b6a1aec24d8bff2016b19da8e, type: 3}
-    weight: 2
+    weight: 5
   - type: 3
     pickupObject: {fileID: 3755432841477086543, guid: 2769fa9a8221da2449b36670064924d7, type: 3}
-    weight: 2
+    weight: 5
   - type: 4
     pickupObject: {fileID: 0}
-    weight: 20
+    weight: 5
 --- !u!1 &1357682594
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,7 +4609,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 36321844}
         m_TargetAssemblyTypeName: GameMenuManager, Assembly-CSharp
-        m_MethodName: RestartScene
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

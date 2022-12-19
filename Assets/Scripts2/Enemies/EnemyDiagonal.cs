@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyDiagonal : Enemy
 {
-    [SerializeField] float _hspeed = 2;
     public override void DefaultStrategy()
     {
-        Enemy_DiagonalMovement em = new Enemy_DiagonalMovement(transform, Shoot, new Vector2(_hspeed, _speed), shootFrequency);
+        Enemy_DiagonalMovement em = new Enemy_DiagonalMovement(transform, Shoot, new Vector2(FlyweightPointer.EnemyDiagonal.horizontal_speed, FlyweightPointer.EnemyDiagonal.speed), FlyweightPointer.EnemyDiagonal.fireRate);
         //em.SetPhases(phases);
         ChangeStrategy(em);
     }

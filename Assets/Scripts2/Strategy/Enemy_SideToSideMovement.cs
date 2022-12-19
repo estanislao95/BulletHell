@@ -25,11 +25,10 @@ public class Enemy_SideToSideMovement : Enemy_Movement
 
 
 
-    public Enemy_SideToSideMovement(Transform HolderRot, Transform transform, Vector3 dir, ShootMethod shoot, float startSpeed = 2, float exitSpeed = 1, float frequency = 1)
+    public Enemy_SideToSideMovement(Transform HolderRot, Transform transform, Vector3 dir, ShootMethod shoot, float startSpeed = 2, float frequency = 1)
     {
         _transform = transform;
         _startSpeed = startSpeed;
-        _exitSpeed = exitSpeed;
         _dir = dir;
         _shoot = shoot;
         _frequency = frequency;

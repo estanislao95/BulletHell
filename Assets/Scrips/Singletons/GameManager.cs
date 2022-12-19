@@ -30,10 +30,27 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.pointcounter(Points);
     }
 
-    public void LoadLevel()
+    public void LoadLevel(int level = 0)
     {
-        SceneManager.LoadScene(levels[currentlevel]);
+        SceneManager.LoadScene(levels[level]);
+    }
+
+    public void PlayNextLevel()
+    {
         currentlevel++;
+        if (currentlevel > levels.Count)
+        {
+            FinishGame();
+            return;
+        }
+
+        LoadLevel(currentlevel);
+    }
+
+    public void FinishGame() 
+    {
+        currentlevel = 0; //TEMP! En teoria aca iria el link al nivel o boss o cutscene final
+        LoadLevel(currentlevel);
     }
     public void PauseTime()
     {

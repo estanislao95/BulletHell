@@ -12,17 +12,15 @@ public class Model : Ilife, IObservableFloat
     public event Action move;
     public event Action stop;
     List<IObserverFloat> _allObservers = new List<IObserverFloat>();
-    float _MaxIframes;
     bool invensivility;
     float timer;
 
 
-    public Model(int life ,Transform transform, List<IObserverFloat> allObservers, float MaxIframes)
+    public Model(int life ,Transform transform, List<IObserverFloat> allObservers)
     {
         _life = life;
         _transform = transform;
         _allObservers = allObservers;
-        _MaxIframes = MaxIframes;
 
     }
 
@@ -45,7 +43,7 @@ public class Model : Ilife, IObservableFloat
         if (invensivility)
         {
             timer += Time.deltaTime;
-            if (timer >= _MaxIframes)
+            if (timer >= FlyweightPointer.Player.IFrames)
             {
                 invensivility = false;
                 timer = 0;
