@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
         GameManager.Instance.player = this;
         life = FlyweightPointer.Player.maxLife;
 
-        _model = new Model(life, transform, miny, maxy, minx, maxx, _allObservers, MaxIframes);
+        _model = new Model(life, transform, _allObservers, MaxIframes);
         _view = new View(hit, dead);
         _controler = new Controler(_model);
 

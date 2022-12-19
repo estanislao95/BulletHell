@@ -14,20 +14,12 @@ public class Model : Ilife, IObservableFloat
     bool invensivility;
     float timer;
 
-    float miny;
-    float maxy;
-    float minx;
-    float maxx;
 
-    public Model(int life ,Transform transform,float _miny, float _maxy, float _minx, float _maxx, List<IObserverFloat> allObservers, float MaxIframes)
+    public Model(int life ,Transform transform, List<IObserverFloat> allObservers, float MaxIframes)
     {
         _life = life;
         _transform = transform;
         _allObservers = allObservers;
-        miny = _miny;
-        maxy = _maxy;
-        minx = _minx;
-        maxx = _maxx;
         _MaxIframes = MaxIframes;
 
     }
@@ -58,10 +50,10 @@ public class Model : Ilife, IObservableFloat
 
     public Vector3 pos(Vector3 ae)
     {
-        if (ae.x >= maxx) ae = new Vector3(maxx, ae.y, ae.z);
-        if (ae.x <= minx) ae = new Vector3(minx, ae.y, ae.z);
-        if (ae.y >= maxy) ae = new Vector3(ae.x, maxy, ae.z);
-        if (ae.y <= miny) ae = new Vector3(ae.x, miny, ae.z);
+        if (ae.x >= BorderManager.Instance.MaxX()) ae = new Vector3(BorderManager.Instance.MaxX(), ae.y, ae.z);
+        if (ae.x <= BorderManager.Instance.MinX()) ae = new Vector3(BorderManager.Instance.MinX(), ae.y, ae.z);
+        if (ae.y >= BorderManager.Instance.MaxY()) ae = new Vector3(ae.x, BorderManager.Instance.MaxY(), ae.z);
+        if (ae.y <= BorderManager.Instance.MinY()) ae = new Vector3(ae.x, BorderManager.Instance.MinY(), ae.z);
         return ae;
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : EnemyAbstract
 {
-    [SerializeField] float shootFrequency = 1;
+    [SerializeField] protected float shootFrequency = 1;
 
 
     #region Preparation

@@ -77,7 +77,8 @@ public class EnemyManager : MonoBehaviour
 
 public enum EnemyType
 {
-    basic
+    basic,
+    side
 }
 
 [System.Serializable]
