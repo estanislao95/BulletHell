@@ -234,8 +234,8 @@ MonoBehaviour:
   _speed: 1
   _maxIFrames: 0.1
   _proyectileType: 1
-  EnemyHurt: 
-  EnemyDie: 
+  EnemyHurt: Enemy_hit
+  EnemyDie: Enemy_Dead
   _cannons:
   - {fileID: 5647430688485330704}
   - {fileID: 7450474499873205244}

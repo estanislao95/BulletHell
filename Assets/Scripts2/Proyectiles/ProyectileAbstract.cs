@@ -20,13 +20,18 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
     [SerializeField] protected ParticleType _particletype;
     public virtual void Activated()
     {
-        _lifeTimer = _lifeMaxTime;
-        _health = _maxLife;
     }
 
     public virtual void Deactivated()
     {
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaa");
         _referenceBack.ReturnObject(this);
+    }
+
+    public virtual void Prepare()
+    {
+        _lifeTimer = _lifeMaxTime;
+        _health = _maxLife;
     }
 
     #region Strategy
@@ -44,6 +49,8 @@ public abstract class ProyectileAbstract : MonoBehaviour, IFactoried<ProyectileA
     #region Damage
     public virtual void Damage(int life)
     {
+        if (_health <= 0) return;
+    
         ParticleManager.instance.SpawnParticle(transform, _particletype);
         _health -= life;
         if (_health <= 0)

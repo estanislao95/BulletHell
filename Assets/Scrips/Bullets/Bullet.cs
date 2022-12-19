@@ -31,9 +31,9 @@ public class Bullet : ProyectileAbstract
         }
     }
 
-    public override void Activated()
+    public override void Prepare()
     {
-        base.Activated();
+        base.Prepare();
         _chosenStrategy = new StraightMovement(transform, transform.up, _speed);
     }
 }
