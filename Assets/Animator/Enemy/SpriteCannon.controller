@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: c7a810a0ef005c5439aefae6f2f5f957, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -148,7 +148,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 150c69efb832e6b4c8d6f8a5abb3c9bf, type: 2}
+  m_Motion: {fileID: 7400000, guid: e2d62396ca2e52d48a8b8f1377da8de5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -202,7 +202,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 150c69efb832e6b4c8d6f8a5abb3c9bf, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0c6487f88f5f1964480379683365703d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -239,7 +239,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteDisc
+  m_Name: SpriteCannon
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: hurt
@@ -301,7 +301,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 150c69efb832e6b4c8d6f8a5abb3c9bf, type: 2}
+  m_Motion: {fileID: 7400000, guid: 79d20acae1ab632469ca27507933bb21, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
