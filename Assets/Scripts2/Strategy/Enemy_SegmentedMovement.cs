@@ -112,9 +112,6 @@ public class Enemy_SegmentedMovement : Enemy_Movement
     {
         timer += Time.deltaTime;
 
-        if (_anim != null)
-            _anim.Move();
-
         if (timer > _time_phase[2])
         {
             _phase = Phase.escape;
@@ -124,6 +121,9 @@ public class Enemy_SegmentedMovement : Enemy_Movement
     void Phase4()
     {
         _transform.position += _dir * _exitSpeed * Time.deltaTime;
+
+        if (_anim != null)
+            _anim.Move();
     }
 
     public override void SetTimer(float t)

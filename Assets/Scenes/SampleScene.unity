@@ -1325,6 +1325,9 @@ MonoBehaviour:
   - type: 0
     enemyObject: {fileID: 7160521791970301051, guid: a88d928f37fae4f43b16d6c9ddd77055, type: 3}
     stock: 3
+  - type: 1
+    enemyObject: {fileID: 4428341795956202064, guid: 6e42dabc386395f4c89e7966d2a57eea, type: 3}
+    stock: 3
 --- !u!1 &470103352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2311,7 @@ MonoBehaviour:
   - positions:
     - {fileID: 1924436505}
     - {fileID: 385765129}
-    types: 00000000
+    types: 01000000
   - positions:
     - {fileID: 2014142870}
     - {fileID: 1114048281}
