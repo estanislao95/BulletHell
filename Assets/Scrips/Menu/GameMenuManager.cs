@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameMenuManager : Menu
 {
-    public int _Game, _Dead, _Victory;
+    public int _Game, _Dead, _Victory, _PauseMenu;
     public static GameMenuManager instance;
     public string ButtonName, VicotoryMusic, DeadMusic, MenuMusic, GameMusic;
 
@@ -48,12 +48,23 @@ public class GameMenuManager : Menu
         AudioManager.instance.Play(VicotoryMusic, true);
     }
 
+    public void Continue()
+    {
+        changeScreen(_Game);
+        GameManager.Instance.ContinueTime();
+    }
+
     public void PauseMenu()
     {
+        changeScreen(_PauseMenu);
         GameManager.Instance.PauseTime();
 
+    }
+
+    public void confirmation()
+    {
         UIManager.Instance.ConfirmScreen().SetConfirmAction(Exit);
-        UIManager.Instance.ConfirmScreen().SetText("Pausa");
+        UIManager.Instance.ConfirmScreen().SetText("Estas seguro?");
         UIManager.Instance.PushConfirmScreen();
     }
 
