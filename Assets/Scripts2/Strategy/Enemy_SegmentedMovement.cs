@@ -111,7 +111,9 @@ public class Enemy_SegmentedMovement : Enemy_Movement
     void Phase3()
     {
         timer += Time.deltaTime;
-        
+
+        if (_anim != null)
+            _anim.Move();
 
         if (timer > _time_phase[2])
         {

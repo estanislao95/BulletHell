@@ -99,6 +99,7 @@ public abstract class EnemyAbstract : MonoBehaviour, IFactoried<EnemyAbstract>, 
     {
         _anim.Dead();
         AudioManager.instance.Play(EnemyDie);
+        LootManager.instance.DropLoot(transform);
         Deactivated();
     }
     #endregion
