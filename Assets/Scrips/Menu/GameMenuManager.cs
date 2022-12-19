@@ -73,6 +73,7 @@ public class GameMenuManager : Menu
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.Instance.ContinueTime();
+        AudioManager.instance.Play(GameMusic, true);
     }
 
     public void ButtonNoice()
