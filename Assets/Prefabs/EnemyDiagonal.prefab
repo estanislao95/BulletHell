@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6728411522943040678}
   - component: {fileID: 3628399136175799224}
-  - component: {fileID: 7160521791970301051}
   - component: {fileID: 2532717123117412148}
   - component: {fileID: 7339995201913734542}
+  - component: {fileID: 4428341795956202064}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyDiagonal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,35 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7160521791970301051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2667833564490419229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9419e41a75fc09b4898848e9090adc21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
-  _maxHealth: 5
-  _health: 1
-  _speed: 1
-  _maxIFrames: 0.5
-  _proyectileType: 0
-  EnemyHurt: Enemy_hit
-  EnemyDie: Enemy_Dead
-  _cannons:
-  - {fileID: 8274313604201672662}
-  _anim: {fileID: 1753748783303411721}
-  DeadPoints: 10
-  shootFrequency: 0.5
-  phases:
-  - 2
-  - 3
-  - 1
 --- !u!61 &2532717123117412148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,6 +134,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &4428341795956202064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667833564490419229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34becd95a3ef45c449654653a0928319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _maxHealth: 5
+  _health: 5
+  _speed: 0.5
+  _maxIFrames: 0.1
+  _proyectileType: 0
+  EnemyHurt: Enemy_hit
+  EnemyDie: Enemy_Dead
+  _cannons:
+  - {fileID: 8274313604201672662}
+  _anim: {fileID: 1753748783303411721}
+  DeadPoints: 0
+  shootFrequency: 0.3
+  phases:
+  - 4
+  - 2
+  _hspeed: 1
 --- !u!1 &2731156272044106741
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1333401826788945531, guid: 7da3ffeca433b08439dbcb7a890b4879, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e3b3e8635c9fcb438d9824416970319, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -6,6 +6,7 @@ public class Enemy : EnemyAbstract
 {
     [SerializeField] protected float shootFrequency = 1;
 
+    [SerializeField] protected float[] phases = { 1, 2 };
 
     #region Preparation
     protected virtual void Start()
@@ -21,7 +22,13 @@ public class Enemy : EnemyAbstract
 
     public override void DefaultStrategy()
     {
-        ChangeStrategy(new Enemy_SegmentedMovement(transform, -transform.up, Shoot, _speed * 2, _speed, shootFrequency));
+        Enemy_SegmentedMovement em = new Enemy_SegmentedMovement(transform, -transform.up, Shoot, _speed * 2, _speed, shootFrequency);
+        //em.SetPhases(phases); //comentado por un error muy extraño error:
+                                //por alguna razon aumentaban los valores de phases cuando se spawneaban los clones
+                                //de 2, 3, 1 pasaba a 2, 7, 17. en inspector.
+                                //pero no entendemos porque, porque el valor phases nunca deberia ser directamente modificado.
+
+        ChangeStrategy(em);
     }
 
     #endregion
