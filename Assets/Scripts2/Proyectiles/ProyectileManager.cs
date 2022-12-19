@@ -42,7 +42,8 @@ public class ProyectileManager : ProyectileManagerAbstract
 
 public enum ProyectileType
 {
-    straight
+    straight,
+    fast
 }
 
 [System.Serializable]

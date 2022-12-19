@@ -10,8 +10,6 @@ public class Player : MonoBehaviour, IPlayerLife, IObservableFloat
     Controler _controler;
     [SerializeField] int life;
 
-    [SerializeField]
-    float miny, maxy, minx, maxx;
     
     [SerializeField]
     string hit, dead;

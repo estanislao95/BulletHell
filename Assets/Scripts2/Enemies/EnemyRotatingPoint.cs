@@ -8,7 +8,9 @@ public class EnemyRotatingPoint : Enemy
     
     public override void DefaultStrategy()
     {
-        ChangeStrategy(new Enemy_SideToSideMovement(RotHolder, transform, transform.right, Shoot, _speed * 2, _speed, shootFrequency));
+        Enemy_SideToSideMovement m = new Enemy_SideToSideMovement(RotHolder, transform, transform.right, Shoot, _speed * 2, _speed, shootFrequency);
+        m.ShotType(_proyectileType);
+        ChangeStrategy(m);
     }
 
 }

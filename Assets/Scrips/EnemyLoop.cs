@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class EnemyLoop : MonoBehaviour
 {
-    [SerializeField] Transform Top;
-    [SerializeField] Transform Left;
-    [SerializeField] Transform Right;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] float offset = 0.5f;
+    private void OnTriggerExit2D(Collider2D collision)
     {
         EnemyAbstract ea = collision.GetComponent<EnemyAbstract>();
 
@@ -22,16 +19,22 @@ public class EnemyLoop : MonoBehaviour
     {
         Vector3 position = t.position;
 
-        position.y = Top.position.y;
-
-        if (position.x > Right.position.x)
+        if (position.x > BorderManager.Instance.MaxX())
         {
-            position.x = Left.position.x;
+            position.x = BorderManager.Instance.MinX() - offset;
+        }
+        else if (position.x < BorderManager.Instance.MinX())
+        {
+            position.x = BorderManager.Instance.MaxX() + offset;
         }
 
-        else if (position.x < Left.position.x)
+        if (position.y > BorderManager.Instance.MaxY())
         {
-            position.x = Right.position.x;
+            position.y = BorderManager.Instance.MinY() - offset;
+        }
+        else if (position.y < BorderManager.Instance.MinY())
+        {
+            position.y = BorderManager.Instance.MaxY() + offset; 
         }
 
         t.position = position;

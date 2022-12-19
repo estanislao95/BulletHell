@@ -233,7 +233,7 @@ MonoBehaviour:
   _health: 4
   _speed: 1
   _maxIFrames: 0.1
-  _proyectileType: 0
+  _proyectileType: 1
   EnemyHurt: 
   EnemyDie: 
   _cannons:
@@ -244,6 +244,9 @@ MonoBehaviour:
   _anim: {fileID: 1753748783303411721}
   DeadPoints: 20
   shootFrequency: 1
+  phases:
+  - 1
+  - 2
   RotHolder: {fileID: 2491967127995881005}
 --- !u!61 &2532717123117412148
 BoxCollider2D:
