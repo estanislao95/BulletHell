@@ -7,7 +7,7 @@ public static class FlyweightPointer
     public static readonly FlyWeight Player = new FlyWeight
     {
         speed = 5,
-        maxLife = 15,
+        maxLife = 8,
         IFrames = 0.5f
     };
 

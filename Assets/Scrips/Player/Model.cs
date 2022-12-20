@@ -6,7 +6,6 @@ public class Model : Ilife, IObservableFloat
 {
     int _life;
     Transform _transform;
-    float _speed = FlyweightPointer.Player.speed;
     public event Action hit;
     public event Action dead;
     public event Action move;
@@ -38,7 +37,7 @@ public class Model : Ilife, IObservableFloat
         else
             stop?.Invoke();
 
-        _transform.position = pos(_transform.position) + dir * _speed * Time.deltaTime;
+        _transform.position = pos(_transform.position) + dir * FlyweightPointer.Player.speed * Time.deltaTime;
 
         if (invensivility)
         {

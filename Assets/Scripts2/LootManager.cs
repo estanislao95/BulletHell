@@ -14,6 +14,7 @@ public class LootManager : MonoBehaviour
     [SerializeField]
     LootData[] _pickUpObject;
     Dictionary<LootType, LootData> _dictionary = new Dictionary<LootType, LootData>();
+    [SerializeField]  List<LootType> _table = new List<LootType>();
 
     private void Awake()
     {
@@ -21,10 +22,19 @@ public class LootManager : MonoBehaviour
 
         for (int i = 0; i < _pickUpObject.Length; i++)
         {
+            LootType type = _pickUpObject[i].type;
+
+            for (int d = 0; d < _pickUpObject[i].weight; d++)
+            {
+                _table.Add(type);
+            }
+
+
             if (_pickUpObject[i].type == LootType.none) continue; //it has the object in the table as a possibility, but won't create it because its literally nothing
 
             _pickUpObject[i].factory = new Factory<item>(_pickUpObject[i].Drop, TurnOn, TurnOff, _pickUpObject[i].weight);
             _dictionary.Add(_pickUpObject[i].type, _pickUpObject[i]);
+            
         }
 
 
@@ -40,9 +50,9 @@ public class LootManager : MonoBehaviour
         p.TurnOff();
     }
 
-    public void DropLoot(Transform t, LootType lt = LootType.none)
+    public void DropLoot(Transform t, LootType lt = LootType.random)
     {
-        if (lt == LootType.none) lt = _pickUpObject[Random.Range(0, _pickUpObject.Length)].type; //if none specified, pick a random one
+        while (lt == LootType.random) lt = _table[Random.Range(0, _table.Count)]; //if none specified, pick a random one
 
         if (lt == LootType.none) return; //if result is still none, dont spawn anything.
 
@@ -74,7 +84,8 @@ public enum LootType
     fireShot,
     laserShot,
     rocketShot,
-    none
+    none,
+    random
 }
 
 [System.Serializable]
